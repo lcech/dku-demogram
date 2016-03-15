@@ -108,6 +108,6 @@ var measure = (function (measure) {
     ga('create', 'UA-74905935-1', 'auto');
     ga('send', 'pageview');
    
-    </script>
+</script>
 
 measure({event: "pageview"});
