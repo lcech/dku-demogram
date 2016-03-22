@@ -94,8 +94,20 @@ var measure = (function (measure) {
     console.log("Event captured. Available data:");
     console.log(JSON.stringify(digitalDataSnapshot, null, 4));
     console.log("==================================================");
+    
     // GA sing in
-    ga('send', 'event', 'Sing in', 'done');
+   
+    if (data.event == "loginFormSent") { 
+      if (data.username == "" && b == "") {
+        ga('send', 'event', 'Sing in', 'fail', 'both');
+      } else if (data.username == "") {
+        ga('send', 'event', 'Sing in', 'fail', 'password');
+      } else if (data.password == "") {
+        ga('send', 'event', 'Sing in', 'fail', 'username');
+      } else {
+        ga('send', 'event', 'Sing in', 'done');
+    }
+}
   };
   
   return measureInterface;
