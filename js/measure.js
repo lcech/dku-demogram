@@ -94,11 +94,14 @@ var measure = (function (measure) {
     console.log("Event captured. Available data:");
     console.log(JSON.stringify(digitalDataSnapshot, null, 4));
     console.log("==================================================");
+    // GA sing in
     ga('send', 'event', 'Sing in', 'done');
   };
   
   return measureInterface;
 }(measure));
+
+// GA script
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
