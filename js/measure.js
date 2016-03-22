@@ -101,9 +101,9 @@ var measure = (function (measure) {
       if (data.username == "" && data.password == "") {
         ga('send', 'event', 'Sing in', 'fail', 'both');
       } else if (data.username == "") {
-        ga('send', 'event', 'Sing in', 'fail', 'password');
-      } else if (data.password == "") {
         ga('send', 'event', 'Sing in', 'fail', 'username');
+      } else if (data.password == "") {
+        ga('send', 'event', 'Sing in', 'fail', 'password');
       } else {
         ga('send', 'event', 'Sing in', 'done');
       }
