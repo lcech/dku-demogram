@@ -94,6 +94,7 @@ var measure = (function (measure) {
     console.log("Event captured. Available data:");
     console.log(JSON.stringify(digitalDataSnapshot, null, 4));
     console.log("==================================================");
+    ga('send', 'event', 'Sing in', 'done');
   };
   
   return measureInterface;
