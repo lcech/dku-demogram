@@ -98,7 +98,7 @@ var measure = (function (measure) {
     // GA sing in
    
     if (data.event == "loginFormSent") { 
-      if (data.username == "" && b == "") {
+      if (data.username == "" && data.password == "") {
         ga('send', 'event', 'Sing in', 'fail', 'both');
       } else if (data.username == "") {
         ga('send', 'event', 'Sing in', 'fail', 'password');
@@ -106,8 +106,8 @@ var measure = (function (measure) {
         ga('send', 'event', 'Sing in', 'fail', 'username');
       } else {
         ga('send', 'event', 'Sing in', 'done');
-    }
-}
+      }
+    };
   };
   
   return measureInterface;
