@@ -95,7 +95,7 @@ var measure = (function (measure) {
     console.log(JSON.stringify(digitalDataSnapshot, null, 4));
     console.log("==================================================");
     // GA sing in
-    ga('send', 'event', 'Sing in', 'done');
+    //ga('send', 'event', 'Sing in', 'done');
   };
   
   return measureInterface;
