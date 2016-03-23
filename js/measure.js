@@ -97,33 +97,74 @@ var measure = (function (measure) {
     
     // GA sing in
    
-    switch (data.event) {
-      case "loginFormSent": {
-        switch (data.formId) {
-          case "loginForm": {
-            if (data.username == "" && data.password == "") {
-              ga('send', 'event', 'Sing in', 'fail', 'both');
-            } else if (data.username == "") {
-              ga('send', 'event', 'Sing in', 'fail', 'username');
-            } else if (data.password == "") {
-              ga('send', 'event', 'Sing in', 'fail', 'password');
-            } else {
-             ga('send', 'event', 'Sing in', 'done');
-            }
-          } break;
-          case "leadForm": {
-            if (data.contact == "") {
-            ga('send', 'event', 'newsletter', 'fail', 'email');
+   {
+     switch (data.event) {
+       case 'loginFormSent':
+         {
+           switch (data.formId) {
+             case 'loginForm':
+               {
+                 aaa();
+               }
+               break;
+             case 'leadForm':
+               {
+                 bbb();
+               }
+           }
+         }
+         break;
+       case 'fileDownload':
+         {
+           ga('send', 'event', 'download', 'done');
+         }
+        break;
+       case 'contactFormSent':
+         {
+           ccc()
+         }
+       };
+    //
+      function aaa() {
+        if (data.username == '' && data.password == '') {
+          ga('send', 'event', 'Sing in', 'fail', 'both');
+        } else if (data.username == '') {
+          ga('send', 'event', 'Sing in', 'fail', 'username');
+        } else if (data.password == '') {
+          ga('send', 'event', 'Sing in', 'fail', 'password');
+        } else {
+          ga('send', 'event', 'Sing in', 'done');
+        }
+      };
+    //
+      function bbb() {
+        if (data.contact == '') {
+          ga('send', 'event', 'newsletter', 'fail', 'email');
           } else {
-            ga('send', 'event', 'newsletter', 'done');
-          }
-        }  
-      }
-      } break;
-      case "fileDownload": {
-       ga('send', 'event', 'download', 'done');
-      } break;
-    };
+          ga('send', 'event', 'newsletter', 'done');
+        }
+      };
+    //
+      function ccc() {
+        if (data.name == '' && data.email == '' && data.massage == '') {
+          ga('send', 'event', 'contact Form', 'fail'); // fial
+        } else if (data.name == '' && data.email == '') {
+          ga('send', 'event', 'contact Form', 'fail', 'just massage');
+        } else if (data.name == '' && data.massage == '') {
+          ga('send', 'event', 'contact Form', 'fail', 'just email');
+        } else if (data.email == '' && data.massage == '') {
+          ga('send', 'event', 'contact Form', 'fail', 'just name');
+        } else if (data.email == '') {
+          ga('send', 'event', 'contact Form', 'fail', 'no email');
+        } else if (data.name == '') {
+          ga('send', 'event', 'contact Form', 'done No Name', data.topic);
+        } else if (data.massage == '') {
+          ga('send', 'event', 'contact Form', 'done No Massage', data.topic);
+        } else
+        ga('send', 'event', 'contact Form', 'done', data.topic);
+      };
+   };
+
     
     // GA script
   };
