@@ -104,12 +104,12 @@ var measure = (function (measure) {
            switch (data.formId) {
              case 'loginForm':
                {
-                 aaa();
+                 loginFormOverovanie();
                }
                break;
              case 'leadForm':
                {
-                 bbb();
+                 leadFormOverovanie();
                }
            }
          }
@@ -121,11 +121,11 @@ var measure = (function (measure) {
         break;
        case 'contactFormSent':
          {
-           ccc()
+           contactFormOverovanie()
          }
        };
     //
-      function aaa() {
+      function loginFormOverovanie() {
         if (data.username == '' && data.password == '') {
           ga('send', 'event', 'Sing in', 'fail', 'both');
         } else if (data.username == '') {
@@ -137,7 +137,7 @@ var measure = (function (measure) {
         }
       };
     //
-      function bbb() {
+      function leadFormOverovanie() {
         if (data.contact == '') {
           ga('send', 'event', 'newsletter', 'fail', 'email');
           } else {
@@ -145,21 +145,21 @@ var measure = (function (measure) {
         }
       };
     //
-      function ccc() {
-        if (data.name == '' && data.email == '' && data.massage == '') {
+      function contactFormOverovanie() {
+        if (data.name == '' && data.email == '' && data.message == '') {
           ga('send', 'event', 'contact Form', 'fail'); // fial
         } else if (data.name == '' && data.email == '') {
-          ga('send', 'event', 'contact Form', 'fail', 'just massage');
-        } else if (data.name == '' && data.massage == '') {
+          ga('send', 'event', 'contact Form', 'fail', 'just message');
+        } else if (data.name == '' && data.message == '') {
           ga('send', 'event', 'contact Form', 'fail', 'just email');
-        } else if (data.email == '' && data.massage == '') {
+        } else if (data.email == '' && data.message == '') {
           ga('send', 'event', 'contact Form', 'fail', 'just name');
         } else if (data.email == '') {
           ga('send', 'event', 'contact Form', 'fail', 'no email');
         } else if (data.name == '') {
           ga('send', 'event', 'contact Form', 'done No Name', data.topic);
         } else if (data.massage == '') {
-          ga('send', 'event', 'contact Form', 'done No Massage', data.topic);
+          ga('send', 'event', 'contact Form', 'done No Message', data.topic);
         } else
         ga('send', 'event', 'contact Form', 'done', data.topic);
       };
