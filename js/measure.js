@@ -97,17 +97,35 @@ var measure = (function (measure) {
     
     // GA sing in
    
-    if (data.event == "loginFormSent") { 
-      if (data.username == "" && data.password == "") {
-        ga('send', 'event', 'Sing in', 'fail', 'both');
-      } else if (data.username == "") {
-        ga('send', 'event', 'Sing in', 'fail', 'username');
-      } else if (data.password == "") {
-        ga('send', 'event', 'Sing in', 'fail', 'password');
-      } else {
-        ga('send', 'event', 'Sing in', 'done');
+    switch (data.event) {
+      case "loginFormSent": {
+        switch (data.formId) {
+          case "loginForm": {
+            if (data.username == "" && data.password == "") {
+              ga('send', 'event', 'Sing in', 'fail', 'both');
+            } else if (data.username == "") {
+              ga('send', 'event', 'Sing in', 'fail', 'username');
+            } else if (data.password == "") {
+              ga('send', 'event', 'Sing in', 'fail', 'password');
+            } else {
+             ga('send', 'event', 'Sing in', 'done');
+            }
+          } break;
+          case "leadForm": {
+            if (data.contact == "") {
+            ga('send', 'event', 'newsletter', 'fail', 'email');
+          } else {
+            ga('send', 'event', 'newsletter', 'done');
+          }
+        }  
       }
+      } break;
+      case "fileDownload": {
+       ga('send', 'event', 'download', 'done');
+      } break;
     };
+    
+    // GA script
   };
   
   return measureInterface;
