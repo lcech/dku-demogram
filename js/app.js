@@ -37,7 +37,7 @@ var dataLayer = dataLayer || [];
 
     eventData = $(this).serializeObject();
     eventData.formId = "leadForm";
-    eventData.event = "loginFormSent";
+    eventData.event = "leadFormSent";
 
     measure(eventData);
     this.reset();
