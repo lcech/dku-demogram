@@ -89,14 +89,14 @@ $('#form').bootstrapValidator({
     },
     accountNumber: {
       validators: {
-//          digits: {
-//            message: 'The value is not a valid number'
-//          },
-//          stringLength: {
-//            min: 2,
-//            max: 10,
-//            message: 'Account number has to be 2-10 digits long'
-//          },
+        digits: {
+          message: 'The value is not a valid number'
+        },
+        stringLength: {
+          min: 2,
+          max: 10,
+          message: 'Account number has to be 2-10 digits long'
+        },
         callback: {
           message: 'Invalid account number',
           callback: function(value) {
