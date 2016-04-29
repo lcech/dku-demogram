@@ -1,27 +1,13 @@
-/*global measure*/
+/*global $,measure*/
+var digitalData = digitalData || {};
 var output = output || {};
 output.errors = output.errors || [];
 
-function checkGlobalErrors() {
-  // These validate input dependent on multiple values
-  var numbers = [((document.getElementsByName('minimum')[0].value != "") === true ? 1 : 0),
-    ((document.getElementsByName('maximum')[0].value != "") === true ? 1 : 0),
-    ((document.getElementsByName('number')[0].value != "") === true ? 1 : 0)];
-  if ((numbers[0] + numbers[1] + numbers[2]) > 1) {
-    return true;
-  } else {
-    output.errors.push({
-      fieldName: 'minimum,maximum,number',
-      errorType: 'numberBetweenMinAndMax',
-      fieldValue: numbers.toString()
-    });
-    return false;
-  }
-}
-
-$('.datepicker').datetimepicker({
-  language: 'cs',
-  pickTime: false
+$('#datepicker').datetimepicker({
+  locale: 'cs',
+  format: 'L'
+}).on('dp.change', function() {
+  $('#datepicker').find('input').change();
 });
 
 $('#form').bootstrapValidator({
@@ -89,14 +75,14 @@ $('#form').bootstrapValidator({
     },
     accountNumber: {
       validators: {
-        digits: {
-          message: 'The value is not a valid number'
-        },
-        stringLength: {
-          min: 2,
-          max: 10,
-          message: 'Account number has to be 2-10 digits long'
-        },
+//          digits: {
+//            message: 'The value is not a valid number'
+//          },
+//          stringLength: {
+//            min: 2,
+//            max: 10,
+//            message: 'Account number has to be 2-10 digits long'
+//          },
         callback: {
           message: 'Invalid account number',
           callback: function(value) {
@@ -222,7 +208,6 @@ $('#form').bootstrapValidator({
   .on('error.form.bv', function(event) {
     event.preventDefault();
     
-    checkGlobalErrors();
     output.event = 'validationFailed';
     measure(output);
     output.errors = [];
@@ -230,12 +215,7 @@ $('#form').bootstrapValidator({
   .on('success.form.bv', function(event) {
     event.preventDefault();
     
-    var OK = checkGlobalErrors();
-    if (OK) {
-      output.event = 'formSent';
-    } else {
-      output.event = 'validationFailed';
-    }
+    output.event = 'formSent';
     measure(output);
     output.errors = [];
   });

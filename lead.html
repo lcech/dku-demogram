@@ -24,7 +24,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/assets/img/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <title>DKu Demo</title>
+    <title>Lead - DKu Demo</title>
     <!-- Bootstrap core CSS-->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- Font Awesome-->
@@ -57,8 +57,8 @@
         </div>
         <div class="navbar-collapse demo-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/index.html">Home</a></li>
-            <li><a href="/lead.html">Lead</a></li>
+            <li><a href="/index.html">Home</a></li>
+            <li class="active"><a href="/lead.html">Lead</a></li>
             <li><a href="/form.html">Form</a></li>
             <li><a href="/downloads.html">Downloads</a></li>
             <li><a href="/video.html">Video</a></li>
@@ -75,36 +75,53 @@
         <!-- /.navbar-collapse-->
       </div>
     </div>
-    <div class="jumbotron">
-      <div class="container">
-        <h1>DKu Demo</h1>
-        <div><p>This is a demo web showing the implementation of digital analytics in the environment of a financial institution.</p>
+    <div class="container content">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Lead</li>
+      </ol>
+      <h1>Lead</h1>
+      <div>
+        <div class="row">
+          <div class="col-md-6"><p>This is a basic product page. Mostly there is a couple of <strong>interactive elements</strong> on the page describing benefits of the product and there is mostly a way to express interest in the product.</p>
+<p>Often there is also <strong>a basic form</strong> allowing the visitor to leave a phone number.</p>
 </div>
-      </div>
-    </div>
-    <!-- Example row of columns-->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2><span aria-hidden="true" class="glyphicon glyphicon-briefcase"></span> Product
-          </h2>
-          <p>Financial website always contain product detail pages. These are for various types of provided Accounts, Loans, Insurance and other services.</p>
-          <p><a href="product.html" role="button" class="btn btn-default">Go to the Product Detail &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2><span aria-hidden="true" class="glyphicon glyphicon-credit-card"></span> Form
-          </h2>
-          <p>Most often there is a possibility to order a product online. For these purposes there are forms. Lots of pretty complex forms.</p>
-          <p><a href="form.html" role="button" class="btn btn-default">See the Form in action &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2><span aria-hidden="true" class="glyphicon glyphicon-envelope"></span> Contact
-          </h2>
-          <p>And last but not least, there is always a Contact Us page where you can find another form and/or other contact details of the company.</p>
-          <p><a href="contact.html" role="button" class="btn btn-default">View contact details &raquo;</a></p>
         </div>
       </div>
     </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div id="alerts"></div>
+          <div class="col-md-6">
+            <form id="leadForm" role="form" action="/leads/add" method="POST" class="panel panel-default ajax-form">
+              <div class="panel-heading">
+                <legend class="panel-title">Callback Form</legend>
+              </div>
+              <div class="panel-body">
+                <div id="contact-group" class="form-group">
+                  <label for="contact-email" class="control-label">Your Phone/E-mail</label>
+                  <input id="contact-email" type="text" name="contact" placeholder="" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="_method" value="POST">
+                  <input type="hidden" name="leadId" id="leadId" value="">
+                  <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <p>Other Contact Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/lead.js"></script>
     <hr>
     <div class="container">
       <footer>
